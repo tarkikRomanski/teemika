@@ -5,17 +5,32 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * Start include BootstrapVue
+ */
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+/**
+ * End include BootstrapVue
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+Vue.mixin({
+    methods: {
+        getApiUrl(slug) {
+            var protocol = location.protocol;
+            var slashes = protocol.concat("//");
+            var host = slashes.concat(window.location.hostname);
+            return host + '/' + slug;
+        }
+    }
+});
+
+Vue.component('login', require('./components/admin/Login.vue'))
 
 const app = new Vue({
     el: '#app'

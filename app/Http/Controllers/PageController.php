@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use App\About;
+use App\User;
 use App\Why;
 use App\Phone;
 use App\Email;
@@ -16,6 +17,7 @@ use App\Title;
 use App\Type;
 use App\Page;
 use App\Order;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 use Illuminate\Http\Request;
 
