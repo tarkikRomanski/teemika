@@ -34,10 +34,12 @@
                     grant_type: 'password',
                     username: this.user.email,
                     password: this.user.password
-                }
+                };
 
                 axios.post(this.getApiUrl('oauth/token'), data)
-                    .then(response => console.log(response))
+                    .then(response => {
+                        this.$auth.setToken(response.data.access_token, response.data.expires_id + Date.now());
+                    });
             }
         }
     }
