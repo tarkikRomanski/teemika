@@ -15,6 +15,7 @@
             </b-form-group>
 
             <b-button type="submit" variant="success">Registration</b-button>
+            <router-link :to="{name:'login'}">Do you have account?</router-link>
         </form>
     </b-card>
 </template>
@@ -35,16 +36,17 @@
             register() {
                 axios.post('api/1.0/register', this.user)
                     .then(response => {
-                        console.log(response);
+                        this.$auth.setToken(response.data.access_token, response.data.expires_in + Date.now());
+                        this.$router.push({name: 'dashboard'});
                     })
                     .catch(response => {
-                        console.log(response);
+                        this.$swal(
+                            'Registration error!',
+                            'You are have a problem with registration data',
+                            'error'
+                        );
                     });
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

@@ -15,8 +15,10 @@ Vue.use(BootstrapVue);
 /**
  * Start include Auth package
  */
-import Auth from './packages/auth/Auth.js';
+import Auth from './plugins/auth/Auth.js';
 Vue.use(Auth);
+
+window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 /**
  * End include Auth package
  */
@@ -30,6 +32,14 @@ Vue.use(VueSwal);
  * End include Sweet Alert
  */
 
+/**
+ * Start routers include
+ */
+import Router from './routes.js';
+/**
+ * End routers include
+ */
+
 Vue.mixin({
     methods: {
         getApiUrl(slug) {
@@ -41,10 +51,15 @@ Vue.mixin({
     }
 });
 
-Vue.component('register', require('./components/admin/auth/Register'));
-Vue.component('login', require('./components/admin/auth/Login'));
-Vue.component('auth', require('./components/admin/auth/Auth'));
+/**
+ * Start custom components
+ */
+Vue.component('admin', require('./components/admin/Admin'));
+/**
+ * End custom components
+ */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: Router
 });

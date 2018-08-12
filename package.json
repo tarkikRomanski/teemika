@@ -21,5 +21,7 @@
         "vue": "^2.5.7",
         "vue-swal": "^0.1.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "vue-router": "^3.0.1"
+    }
 }

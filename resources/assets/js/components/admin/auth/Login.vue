@@ -11,6 +11,7 @@
             </b-form-group>
 
             <b-button type="submit" variant="success">Login</b-button>
+            <router-link :to="{name:'registration'}">Do you haven't account?</router-link>
         </form>
     </b-card>
 </template>
@@ -39,6 +40,7 @@
                 axios.post(this.getApiUrl('oauth/token'), data)
                     .then(response => {
                         this.$auth.setToken(response.data.access_token, response.data.expires_in + Date.now());
+                        this.$router.push({name: 'dashboard'});
                     })
                     .catch(response => {
                         this.$swal(

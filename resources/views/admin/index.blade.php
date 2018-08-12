@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <auth></auth>
+    <admin></admin>
 @endsection
