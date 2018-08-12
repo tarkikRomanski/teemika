@@ -21,6 +21,14 @@ Vue.use(Auth);
  * End include Auth package
  */
 
+/**
+ * Start include Sweet Alert
+ */
+import VueSwal from 'vue-swal'
+Vue.use(VueSwal);
+/**
+ * End include Sweet Alert
+ */
 
 Vue.mixin({
     methods: {
@@ -33,7 +41,9 @@ Vue.mixin({
     }
 });
 
-Vue.component('login', require('./components/admin/Login.vue'));
+Vue.component('register', require('./components/admin/auth/Register'));
+Vue.component('login', require('./components/admin/auth/Login'));
+Vue.component('auth', require('./components/admin/auth/Auth'));
 
 const app = new Vue({
     el: '#app'

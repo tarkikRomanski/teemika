@@ -1,7 +1,11 @@
 <template>
     <b-card class="col-md-8 offset-md-2">
-        <form id="loginForm" @submit.prevent="login">
-            <h1>Login</h1>
+        <form id="loginForm" @submit.prevent="register">
+            <h1>Registration</h1>
+            <b-form-group label="Your name" label-for="user_name">
+                <b-form-input id="user_name" type="text" v-model.trim="user.name"></b-form-input>
+            </b-form-group>
+
             <b-form-group label="Your email" label-for="user_email">
                 <b-form-input id="user_email" type="email" v-model.trim="user.email"></b-form-input>
             </b-form-group>
@@ -10,7 +14,7 @@
                 <b-form-input id="user_password" type="password" v-model.trim="user.password"></b-form-input>
             </b-form-group>
 
-            <b-button type="submit" variant="success">Login</b-button>
+            <b-button type="submit" variant="success">Registration</b-button>
         </form>
     </b-card>
 </template>
@@ -20,6 +24,7 @@
         data() {
             return {
                 user: {
+                    name: null,
                     email: null,
                     password: null
                 }
@@ -27,20 +32,19 @@
         },
 
         methods: {
-            login() {
-                let data = {
-                    client_id: 2,
-                    client_secret: 'fMjPMcNMci427jF9e2AIvIFWHnKp36ycjCx99m6i',
-                    grant_type: 'password',
-                    username: this.user.email,
-                    password: this.user.password
-                };
-
-                axios.post(this.getApiUrl('oauth/token'), data)
+            register() {
+                axios.post('api/1.0/register', this.user)
                     .then(response => {
-                        this.$auth.setToken(response.data.access_token, response.data.expires_id + Date.now());
+                        console.log(response);
+                    })
+                    .catch(response => {
+                        console.log(response);
                     });
             }
         }
     }
 </script>
+
+<style scoped>
+
+</style>

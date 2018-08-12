@@ -27,11 +27,7 @@ export default function(Vue) {
         },
 
         isAuthenticated() {
-            if (this.getToken()) {
-                return true;
-            }
-
-            return false;
+            return this.getToken() ? true : false;
         }
     };
 
