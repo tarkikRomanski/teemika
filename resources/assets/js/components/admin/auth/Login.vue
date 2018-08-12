@@ -42,12 +42,14 @@
                         this.$auth.setToken(response.data.access_token, response.data.expires_in + Date.now());
                         this.$router.push({name: 'dashboard'});
                     })
-                    .catch(response => {
-                        this.$swal(
-                            'Authentication error!',
-                            'You are have a problem with authentication data',
-                            'error'
-                        );
+                    .catch(({response}) => {
+                        if (response.status == 401) {
+                            this.$swal(
+                                'Authentication error!',
+                                'You are have a problem with authentication data',
+                                'error'
+                            );
+                        }
                     });
             }
         }

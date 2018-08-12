@@ -15,3 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('/1.0/register', 'Api\UserController@store')->name('api.register');
 
+Route::middleware(['auth:api'])->namespace('Api')
+    ->prefix('1.0')
+    ->group(function () {
+    Route::resource('about', 'AboutController')->except(['edit', 'create']);
+});
