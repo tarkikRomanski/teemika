@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Teemika') }} Admin</title>
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ mix('css/admin.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 <body>
