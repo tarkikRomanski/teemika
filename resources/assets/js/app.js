@@ -15,7 +15,7 @@ Vue.use(BootstrapVue);
 /**
  * Start include Auth package
  */
-import Auth from './plugins/auth/Auth.js';
+import Auth from './plugins/auth';
 Vue.use(Auth);
 
 window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();

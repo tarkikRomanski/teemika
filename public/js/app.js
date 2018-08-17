@@ -31198,7 +31198,7 @@ module.exports = __webpack_require__(243);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bootstrap_vue__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_auth_Auth_js__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_auth__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_swal__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_swal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_swal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_js__ = __webpack_require__(218);
@@ -31220,7 +31220,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_bootstrap_vue__["a" /* default */]);
  * Start include Auth package
  */
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_1__plugins_auth_Auth_js__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1__plugins_auth__["a" /* default */]);
 
 window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 /**
@@ -64446,6 +64446,8 @@ var Auth = {
             setToken: function setToken(token, expiration) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('expiration', expiration);
+
+                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.getToken();
             },
             getToken: function getToken() {
                 var token = localStorage.getItem('token');

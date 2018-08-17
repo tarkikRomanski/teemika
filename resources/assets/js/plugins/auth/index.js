@@ -30,6 +30,8 @@ const Auth = {
             setToken(token, expiration) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('expiration', expiration);
+
+                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.getToken();
             },
 
             getToken() {
