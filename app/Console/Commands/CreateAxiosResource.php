@@ -68,6 +68,7 @@ class CreateAxiosResource extends Command
 
     /**
      * Create resource class
+     *
      * @param $resourceClassName
      * @param $resourceRouteName
      * @param $resourceFileName
