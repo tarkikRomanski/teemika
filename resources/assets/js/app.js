@@ -17,8 +17,6 @@ Vue.use(BootstrapVue);
  */
 import Auth from './plugins/auth';
 Vue.use(Auth);
-
-window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 /**
  * End include Auth package
  */
@@ -26,10 +24,28 @@ window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.get
 /**
  * Start include Sweet Alert
  */
-import VueSwal from 'vue-swal'
-Vue.use(VueSwal);
+import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
 /**
  * End include Sweet Alert
+ */
+
+/**
+ * Froala begin
+ */
+// Require Froala Editor js file.
+require('froala-editor/js/froala_editor.pkgd.min');
+
+// Require Froala Editor css files.
+require('froala-editor/css/froala_editor.pkgd.min.css');
+require('font-awesome/css/font-awesome.css');
+require('froala-editor/css/froala_style.min.css');
+
+// Import and use Vue Froala lib.
+import VueFroala from 'vue-froala-wysiwyg';
+Vue.use(VueFroala);
+/**
+ * Froala end
  */
 
 /**
@@ -54,6 +70,7 @@ Vue.mixin({
 /**
  * Start custom components
  */
+Vue.component('nav-bar', require('./components/admin/NavBar'));
 Vue.component('admin', require('./components/admin/Admin'));
 /**
  * End custom components

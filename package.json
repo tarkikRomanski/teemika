@@ -18,10 +18,11 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
-        "vue": "^2.5.7",
-        "vue-swal": "^0.1.0"
+        "vue": "^2.5.7"
     },
     "dependencies": {
-        "vue-router": "^3.0.1"
+        "vue-froala-wysiwyg": "^2.8.4",
+        "vue-router": "^3.0.1",
+        "vue-sweetalert2": "^1.5.2"
     }
 }

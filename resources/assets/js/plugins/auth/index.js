@@ -60,6 +60,8 @@ const Auth = {
             }
         };
 
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
+
 
         Object.defineProperties(Vue.prototype, {
             $auth: {

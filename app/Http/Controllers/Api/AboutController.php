@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\About;
+use App\Http\Resources\AboutResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -16,7 +17,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return response(About::all(), Response::HTTP_OK);
+        $abouts = About::latest()->get();
+        return response(AboutResource::collection($abouts), Response::HTTP_OK);
     }
 
     /**
@@ -27,9 +29,9 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        About::created($request->all());
+        $about = About::create($request->only(['text']));
 
-        return response(['created' => true], Response::HTTP_OK);
+        return response(new AboutResource($about), Response::HTTP_OK);
     }
 
     /**
@@ -40,7 +42,7 @@ class AboutController extends Controller
      */
     public function show(About $about)
     {
-        return response($about, Response::HTTP_OK);
+        return response(new AboutResource($about), Response::HTTP_OK);
     }
 
     /**

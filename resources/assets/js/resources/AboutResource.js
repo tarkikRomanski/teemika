@@ -14,7 +14,7 @@ export class AboutResource extends Resource {
     }
 
     update(id, data, config = {}) {
-        return super.create('about/' + id, data, config);
+        return super.post('about/' + id, data, config);
     }
 
     delete(id) {

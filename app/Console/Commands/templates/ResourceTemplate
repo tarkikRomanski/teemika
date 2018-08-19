@@ -14,7 +14,7 @@ export class {{ResourceClassName}} extends Resource {
     }
 
     update(id, data, config = {}) {
-        return super.create('{{ResourceRoute}}/' + id, data, config);
+        return super.post('{{ResourceRoute}}/' + id, data, config);
     }
 
     delete(id) {
